@@ -1,0 +1,47 @@
+                <?php
+include "a/koneksi.php";
+$query=mysql_query("SELECT*FROM guru");
+?>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Guru</h3>
+                            <p class="text-muted">Daftar Guru</p>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th><input type="checkbox" onclick="toggle(this)"></th>
+                                            <th>NO</th>
+                                            <th>NIP</th>
+                                            <th>Nama Guru</th>
+                                            <th>Absensi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $count=0;
+                                    while($tampil=mysql_fetch_row($query))   
+                                    {
+                                        $count++
+                                    ?>
+                                    <tr>
+                                    <th><input type="checkbox"  name="dipilih[]" value="<?php echo $tampil['nip']; ?>"></th>
+                                    <td> <?php echo $count;?> </td>
+                                    <td ><?php echo $tampil[0];?></td>
+                                    <td ><?php echo $tampil[1];?></td>
+                                    <td ><?php echo $tampil[2];?></td>
+                                    <td><form><option>A</option></form></td>
+                                    <td><form><option>I</option></form></td>
+                                    <td><form><option>S</option></form></td>
+                                        </tr>
+                                            <?php
+                                            }
+                                            ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
